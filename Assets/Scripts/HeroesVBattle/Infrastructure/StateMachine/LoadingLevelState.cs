@@ -42,6 +42,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     {
       HideDisclaimer();
       InitReconnaissanceHud();
+      
+      _stateMachine.Enter<ReconnaissanceState>();
     }
 
     private static void InitReconnaissanceHud()
