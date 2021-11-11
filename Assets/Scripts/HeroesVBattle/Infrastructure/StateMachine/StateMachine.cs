@@ -13,7 +13,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     {
       _states = new Dictionary<Type, IState>
       {
-        [typeof(BootstrapState)] = new BootstrapState(this, diContainer)
+        [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
+        [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>())
       };
     }
 

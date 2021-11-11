@@ -5,8 +5,6 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 {
   public class BootstrapState : IState
   {
-    private const string BootstrapperPath = "Infrastructure/Bootstrapper";
-
     private readonly StateMachine _stateMachine;
     private readonly DiContainer _diContainer;
 
@@ -14,18 +12,17 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     {
       _stateMachine = stateMachine;
       _diContainer = diContainer;
+      RegisterServices();
     }
 
     public void Enter() => 
-      RegisterServices();
+      _stateMachine.Enter<LoadingLevelState>();
 
     private void RegisterServices()
     {
       _diContainer.Bind<CoroutineRunner>().FromMethod(Object.FindObjectOfType<CoroutineRunner>).AsSingle();
       _diContainer.Bind<ICoroutineRunner>().To<CoroutineRunner>().FromResolve();
       _diContainer.Bind<SceneLoader>().FromNew().AsSingle();
-      var bootstrapper = _diContainer.InstantiatePrefabResourceForComponent<Bootstrapper>(BootstrapperPath);
-      _diContainer.Bind<Bootstrapper>().FromInstance(bootstrapper).AsSingle();
     }
 
     public void Exit()
