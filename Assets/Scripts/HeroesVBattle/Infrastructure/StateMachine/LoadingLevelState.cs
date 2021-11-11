@@ -37,7 +37,10 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private void LoadMainScene() => 
       _sceneLoader.Load(MainSceneName,OnLoadedScene);
 
-    private void OnLoadedScene() =>
+    private void OnLoadedScene()
+    {
       _disclaimer.Hide();
+      _disclaimer = null;
+    }
   }
 }
