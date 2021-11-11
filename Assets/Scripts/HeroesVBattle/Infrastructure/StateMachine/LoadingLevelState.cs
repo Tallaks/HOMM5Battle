@@ -7,6 +7,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
   {
     private const string MainSceneName = "Main";
     private const string DisclaimerPrefabPath = "UI/Disclaimer";
+    private const string UIReconnaissancePrefabPath = "UI/UI - Reconnaissance";
 
     private readonly StateMachine _stateMachine;
     private readonly SceneLoader _sceneLoader;
@@ -38,6 +39,18 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _sceneLoader.Load(MainSceneName,OnLoadedScene);
 
     private void OnLoadedScene()
+    {
+      HideDisclaimer();
+      InitReconnaissanceHud();
+    }
+
+    private static void InitReconnaissanceHud()
+    {
+      var reconnaissancePrefab = Resources.Load<GameObject>(UIReconnaissancePrefabPath);
+      Object.Instantiate(reconnaissancePrefab);
+    }
+
+    private void HideDisclaimer()
     {
       _disclaimer.Hide();
       _disclaimer = null;
