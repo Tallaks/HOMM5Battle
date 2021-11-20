@@ -7,6 +7,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
   {
     private readonly StateMachine _stateMachine;
     private readonly UiFabric _uiFabric;
+    private UiGameplayMediator _uiMediator;
 
     public ReconnaissanceState(StateMachine stateMachine, UiFabric uiFabric)
     {
@@ -16,7 +17,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     public void Enter()
     {
-      UiGameplayMediator uiMediator = _uiFabric.Create(this);
+      _uiMediator = _uiFabric.Create(this);
     }
 
     public void Exit()
