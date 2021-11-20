@@ -20,9 +20,11 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     private void RegisterServices()
     {
+      _diContainer.Bind<IStateMachine>().To<StateMachine>().FromInstance(_stateMachine);
       _diContainer.Bind<CoroutineRunner>().FromMethod(Object.FindObjectOfType<CoroutineRunner>).AsSingle();
       _diContainer.Bind<ICoroutineRunner>().To<CoroutineRunner>().FromResolve();
       _diContainer.Bind<SceneLoader>().FromNew().AsSingle();
+      _diContainer.Bind<UiFabric>().FromNew().AsSingle();
     }
 
     public void Exit()
