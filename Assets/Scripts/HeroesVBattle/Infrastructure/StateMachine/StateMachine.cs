@@ -4,7 +4,7 @@ using Zenject;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public class StateMachine
+  public class StateMachine : IStateMachine
   {
     private Dictionary<Type, IState> _states;
     private IState _currentState;
