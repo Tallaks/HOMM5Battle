@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HeroesVBattle.Infrastructure.UI;
 using Zenject;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
@@ -15,7 +16,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       {
         [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
         [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>()),
-        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this)
+        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>())
       };
     }
 
