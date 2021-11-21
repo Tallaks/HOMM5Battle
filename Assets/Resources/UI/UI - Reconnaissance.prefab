@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9048876134477348698}
   - component: {fileID: 1053979089389793787}
+  - component: {fileID: 2130946281762794405}
   m_Layer: 0
   m_Name: UI - Reconnaissance
   m_TagString: Untagged
@@ -400,6 +401,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7894d4e243495e9b5a309c4bb785a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2130946281762794405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048876134477348699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f4b089ca711a48b30242930549965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startBattleButton: {fileID: 9048876134347696058}
 --- !u!1 &9048876134718426445
 GameObject:
   m_ObjectHideFlags: 0
