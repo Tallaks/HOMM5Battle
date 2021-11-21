@@ -1,24 +1,27 @@
 ﻿using HeroesVBattle.Infrastructure.StateMachine;
 using HeroesVBattle.Infrastructure.UI.Mediator;
 using UnityEngine;
+using Zenject;
 
 namespace HeroesVBattle.Infrastructure.UI
 {
   public class UiFabric
   {
+    private readonly DiContainer _container;
+
+    public UiFabric(DiContainer container) => 
+      _container = container;
+
     private const string UIReconnaissancePrefabPath = "UI/UI - Reconnaissance";
     
-    public UiGameplayMediator Create(IState gameState)
+    public UiGameplayMediator Create<TState>() where TState : IState
     {
-      if (gameState.GetType() == typeof(ReconnaissanceState))
+      if (typeof(TState) == typeof(ReconnaissanceState))
         return InstantiateReconnaissanceHud();
       else return null;
     }
 
-    private UiGameplayMediator InstantiateReconnaissanceHud()
-    {
-      var reconnaissancePrefab = Resources.Load<GameObject>(UIReconnaissancePrefabPath);
-      return Object.Instantiate(reconnaissancePrefab).GetComponent<ReconnaissanceStateMediator>();
-    }
+    private ReconnaissanceStateMediator InstantiateReconnaissanceHud() => 
+      _container.InstantiatePrefabResource(UIReconnaissancePrefabPath).GetComponent<ReconnaissanceStateMediator>();
   }
 }
