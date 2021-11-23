@@ -1,3 +1,4 @@
+using HeroesVBattle.Infrastructure.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,12 +11,14 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     private readonly StateMachine _stateMachine;
     private readonly SceneLoader _sceneLoader;
+    private readonly UiFabric _uiFabric;
     private Disclaimer _disclaimer;
 
-    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader)
+    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric)
     {
       _stateMachine = stateMachine;
       _sceneLoader = sceneLoader;
+      _uiFabric = uiFabric;
     }
 
     public void Enter()
@@ -40,6 +43,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private void OnLoadedScene()
     {
       HideDisclaimer();
+      _uiFabric.CreateCommon();
       _stateMachine.Enter<ReconnaissanceState>();
     }
 
