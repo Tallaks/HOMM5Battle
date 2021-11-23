@@ -4,9 +4,7 @@ namespace HeroesVBattle.Infrastructure
 {
   public class CoroutineRunner : MonoBehaviour, ICoroutineRunner
   {
-    private void Awake()
-    {
+    private void Awake() => 
       DontDestroyOnLoad(this);
-    }
   }
 }
