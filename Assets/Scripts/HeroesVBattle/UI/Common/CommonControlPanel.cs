@@ -7,6 +7,7 @@ namespace HeroesVBattle.UI.Common
   public class CommonControlPanel : MonoBehaviour
   {
     [SerializeField] private Button _surrenderButton;
+    
     private CommonMediator _mediator;
     
     private void Awake()
@@ -15,12 +16,13 @@ namespace HeroesVBattle.UI.Common
       _mediator = GetComponent<CommonMediator>();
     }
 
-    private void Surrnder() => 
-      _mediator.Surrneder();
-
-    private void OnDestroy()
+    private void Surrnder()
     {
-      _surrenderButton.onClick.RemoveAllListeners();
+      _mediator.OpenResultWindow();
+      _mediator.Surrneder();
     }
+
+    private void OnDestroy() => 
+      _surrenderButton.onClick.RemoveAllListeners();
   }
 }
