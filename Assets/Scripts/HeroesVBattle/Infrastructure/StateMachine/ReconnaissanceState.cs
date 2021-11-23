@@ -16,10 +16,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _uiFabric = uiFabric;
     }
 
-    public void Enter()
-    {
+    public void Enter() => 
       _uiMediator = (ReconnaissanceStateMediator)_uiFabric.Create<ReconnaissanceState>();
-    }
 
     public void Exit() => 
       Object.Destroy(_uiMediator.gameObject);

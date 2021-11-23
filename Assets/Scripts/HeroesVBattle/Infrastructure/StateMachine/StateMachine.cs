@@ -18,7 +18,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
         [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>()),
         [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>()),
         [typeof(EnemyPlacingState)] = new EnemyPlacingState(this),
-        [typeof(PlayerDefiningState)] = new PlayerDefiningState(this)
+        [typeof(PlayerDefiningState)] = new PlayerDefiningState(this),
+        [typeof(TacticalState)] = new TacticalState(this,diContainer.Resolve<UiFabric>())
       };
     }
 
