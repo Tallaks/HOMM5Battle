@@ -21,7 +21,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
         [typeof(PlayerDefiningState)] = new PlayerDefiningState(this),
         [typeof(TacticalState)] = new TacticalState(this,diContainer.Resolve<UiFabric>()),
         [typeof(AnimationState)] = new AnimationState(this),
-        [typeof(BattleResultState)] = new BattleResultState(this)
+        [typeof(BattleResultState)] = new BattleResultState(this),
+        [typeof(ExitGameState)] = new ExitGameState(this)
       };
     }
 
