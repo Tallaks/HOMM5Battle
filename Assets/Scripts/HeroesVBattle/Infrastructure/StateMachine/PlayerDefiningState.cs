@@ -7,9 +7,8 @@
     public PlayerDefiningState(StateMachine stateMachine) => 
       _stateMachine = stateMachine;
 
-    public void Enter()
-    {
-    }
+    public void Enter() => 
+      _stateMachine.Enter<TacticalState>();
 
     public void Exit()
     {
