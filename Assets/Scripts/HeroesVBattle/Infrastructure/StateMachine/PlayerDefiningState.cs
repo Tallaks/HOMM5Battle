@@ -1,14 +1,15 @@
 ﻿namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public class EnemyPlacingState : IState
+  public class PlayerDefiningState : IState
   {
     private readonly StateMachine _stateMachine;
 
-    public EnemyPlacingState(StateMachine stateMachine) => 
+    public PlayerDefiningState(StateMachine stateMachine) => 
       _stateMachine = stateMachine;
 
-    public void Enter() => 
-      _stateMachine.Enter<PlayerDefiningState>();
+    public void Enter()
+    {
+    }
 
     public void Exit()
     {
