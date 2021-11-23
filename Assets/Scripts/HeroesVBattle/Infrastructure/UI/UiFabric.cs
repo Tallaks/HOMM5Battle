@@ -1,6 +1,5 @@
 ﻿using HeroesVBattle.Infrastructure.StateMachine;
 using HeroesVBattle.Infrastructure.UI.Mediator;
-using UnityEngine;
 using Zenject;
 
 namespace HeroesVBattle.Infrastructure.UI
@@ -13,13 +12,19 @@ namespace HeroesVBattle.Infrastructure.UI
       _container = container;
 
     private const string UIReconnaissancePrefabPath = "UI/UI - Reconnaissance";
+    private const string UITacticPrefabPath = "UI/UI - TacticalState";
     
     public UiGameplayMediator Create<TState>() where TState : IState
     {
       if (typeof(TState) == typeof(ReconnaissanceState))
         return InstantiateReconnaissanceHud();
+      if (typeof(TState) == typeof(TacticalState))
+        return InstantiateTacticalHud();
       else return null;
     }
+
+    private TacticalStateMediator InstantiateTacticalHud() => 
+      _container.InstantiatePrefabResource(UITacticPrefabPath).GetComponent<TacticalStateMediator>();
 
     private ReconnaissanceStateMediator InstantiateReconnaissanceHud() => 
       _container.InstantiatePrefabResource(UIReconnaissancePrefabPath).GetComponent<ReconnaissanceStateMediator>();
