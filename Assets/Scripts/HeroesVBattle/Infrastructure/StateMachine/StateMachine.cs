@@ -15,13 +15,13 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _states = new Dictionary<Type, IState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
-        [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>()),
+        [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>(), diContainer.Resolve<UiFabric>()),
         [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>()),
         [typeof(EnemyPlacingState)] = new EnemyPlacingState(this),
         [typeof(PlayerDefiningState)] = new PlayerDefiningState(this),
         [typeof(TacticalState)] = new TacticalState(this,diContainer.Resolve<UiFabric>()),
         [typeof(AnimationState)] = new AnimationState(this),
-        [typeof(BattleReportState)] = new BattleReportState(this)
+        [typeof(BattleResultState)] = new BattleResultState(this)
       };
     }
 
