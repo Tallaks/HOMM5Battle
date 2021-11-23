@@ -9,5 +9,9 @@ namespace HeroesVBattle.Infrastructure.UI.Mediator
     private StateMachine.StateMachine _stateMachine;
 
     public void StartBattle() => _stateMachine.Enter<EnemyPlacingState>();
+
+    public void Surrneder()
+    {
+    }
   }
 }

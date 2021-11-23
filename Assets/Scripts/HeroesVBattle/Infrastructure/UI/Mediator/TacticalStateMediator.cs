@@ -9,5 +9,10 @@ namespace HeroesVBattle.Infrastructure.UI.Mediator
     private StateMachine.StateMachine _stateMachine;
 
     public void Defend() => _stateMachine.Enter<AnimationState>();
+
+    // TODO: Сделать отдельную контрольную панель для общих кнопок
+    public void Surrender()
+    {
+    }
   }
 }
