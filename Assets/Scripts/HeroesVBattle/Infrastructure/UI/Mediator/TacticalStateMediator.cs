@@ -8,6 +8,6 @@ namespace HeroesVBattle.Infrastructure.UI.Mediator
     [Inject]
     private StateMachine.StateMachine _stateMachine;
 
-    public void Defend() => _stateMachine.Enter<PlayerDefiningState>();
+    public void Defend() => _stateMachine.Enter<AnimationState>();
   }
 }
