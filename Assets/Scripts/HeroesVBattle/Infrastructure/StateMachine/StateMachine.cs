@@ -20,7 +20,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
         [typeof(EnemyPlacingState)] = new EnemyPlacingState(this),
         [typeof(PlayerDefiningState)] = new PlayerDefiningState(this),
         [typeof(TacticalState)] = new TacticalState(this,diContainer.Resolve<UiFabric>()),
-        [typeof(AnimationState)] = new AnimationState(this)
+        [typeof(AnimationState)] = new AnimationState(this),
+        [typeof(BattleReportState)] = new BattleReportState(this)
       };
     }
 
