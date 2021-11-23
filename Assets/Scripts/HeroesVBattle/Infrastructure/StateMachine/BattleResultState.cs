@@ -1,8 +1,8 @@
 ﻿namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public class BattleReportState : IState
+  public class BattleResultState : IState
   {
-    public BattleReportState(StateMachine stateMachine)
+    public BattleResultState(StateMachine stateMachine)
     {
     }
 
