@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62da984e2a594a8d8bf85d4ba9dcddb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _battleResultWindow: {fileID: 7226078613638253311}
+  _battleResultWindow: {fileID: 8503380911253941316}
 --- !u!1 &4730323162568383309
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +390,10 @@ PrefabInstance:
     - target: {fileID: 7324244092247328133, guid: 31af57eba62e4c2419353664e6fd2a3a, type: 3}
       propertyPath: m_Name
       value: Button - Surrender
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161119204190719360, guid: 31af57eba62e4c2419353664e6fd2a3a, type: 3}
+      propertyPath: m_fontSize
+      value: 7.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31af57eba62e4c2419353664e6fd2a3a, type: 3}
