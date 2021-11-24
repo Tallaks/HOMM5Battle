@@ -1,11 +1,14 @@
+using System;
+using HeroesVBattle.Audio;
 using HeroesVBattle.Infrastructure.UI;
-using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
 {
   public class BootstrapState : IState
   {
+    private const string SoundEffectsPrefabPath = "Audio/Effects";
     private readonly StateMachine _stateMachine;
     private readonly DiContainer _diContainer;
 
@@ -26,7 +29,11 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _diContainer.Bind<ICoroutineRunner>().To<CoroutineRunner>().FromResolve();
       _diContainer.Bind<SceneLoader>().FromNew().AsSingle();
       _diContainer.Bind<UiFabric>().FromNew().AsSingle().WithArguments(_diContainer);
+      _diContainer.Bind<SoundEffectsPlayer>().FromMethod(InstantiateSoundEffectPlayer()).AsSingle();
     }
+
+    private Func<SoundEffectsPlayer> InstantiateSoundEffectPlayer() => 
+      () => _diContainer.InstantiatePrefabResource(SoundEffectsPrefabPath).GetComponent<SoundEffectsPlayer>();
 
     public void Exit()
     {
