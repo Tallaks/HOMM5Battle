@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca9b0106cc3c404c976fd54eed0e787, type: 3}
+  m_Name: DuelIrinaArmy
+  m_EditorClassIdentifier: 
+  Hero: {fileID: 11400000, guid: 41b38ac26ce29f0409422edc4258d643, type: 2}
+  Squads:
+  - Creature: {fileID: 11400000, guid: a7c154f429c898a4bab6ab1f8eed8e32, type: 2}
+    Quantity: 40
+  - Creature: {fileID: 11400000, guid: 398a9a9fa5f6d2048b09518b85de0622, type: 2}
+    Quantity: 80
