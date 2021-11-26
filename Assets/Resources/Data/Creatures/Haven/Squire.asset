@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8060e48cf554965b5657762ed62446b, type: 3}
   m_Name: Squire
   m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 300f21cb24ad83f4882623b9e9389759, type: 3}
   Attack: 5
   Defence: 9
   MinDamage: 2

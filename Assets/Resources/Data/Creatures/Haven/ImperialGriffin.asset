@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8060e48cf554965b5657762ed62446b, type: 3}
   m_Name: ImperialGriffin
   m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 66a8c757f5ee78c4ca150bcd6f4e5353, type: 3}
   Attack: 9
   Defence: 8
   MinDamage: 5
