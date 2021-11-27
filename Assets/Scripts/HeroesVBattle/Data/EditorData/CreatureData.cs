@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HeroesVBattle.Data.EditorData
 {
   [CreateAssetMenu(menuName = "ObjectData/Creature", fileName = "NewCreature", order = 1)]
-  public class CreatureData : ScriptableObject
+  public class CreatureData : SerializedScriptableObject
   {
     [PreviewField]
     [TableColumnWidth(60,false)]

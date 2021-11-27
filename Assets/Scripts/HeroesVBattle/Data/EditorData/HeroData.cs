@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HeroesVBattle.Data.EditorData
 {
   [CreateAssetMenu(menuName = "ObjectData/Hero", fileName = "NewHero", order = 0)]
-  public class HeroData : ScriptableObject
+  public class HeroData : SerializedScriptableObject
   {
     [PreviewField]
     public Texture Icon;
