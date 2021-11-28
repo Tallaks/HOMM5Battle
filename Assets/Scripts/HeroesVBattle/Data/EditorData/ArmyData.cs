@@ -19,6 +19,6 @@ namespace HeroesVBattle.Data.EditorData
 
     [BoxGroup("Army")]
     [TableList]
-    public Squad[] Squads;
+    public UnitData[] Squads;
   }
 }

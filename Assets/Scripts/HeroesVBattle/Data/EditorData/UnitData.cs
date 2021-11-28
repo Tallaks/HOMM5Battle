@@ -5,7 +5,7 @@ using UnityEngine;
 namespace HeroesVBattle.Data.EditorData
 {
   [Serializable]
-  public class Squad
+  public class UnitData
   {
     private const int Size = 55;
 
@@ -13,10 +13,10 @@ namespace HeroesVBattle.Data.EditorData
     [TableColumnWidth(Size,false)]
     [ShowInInspector]
     [PropertyOrder(0)]
-    public Texture Icon => creature?.Icon;
+    public Texture Icon => Creature?.Icon;
     
     [PropertyOrder(1)]
-    public CreatureData creature;
+    public CreatureData Creature;
 
     [PropertyOrder(2)]
     [TableColumnWidth(50,false)]
