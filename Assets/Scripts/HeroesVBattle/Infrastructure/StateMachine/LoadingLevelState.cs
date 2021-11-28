@@ -1,4 +1,5 @@
 using HeroesVBattle.Data.GameData;
+using HeroesVBattle.Gameplay.Units;
 using HeroesVBattle.Infrastructure.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -27,9 +28,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     {
       InstantiateDisclaimer();
       LoadMainScene();
-
-      var loader = new InitialDataLoader();
-      _initData = loader.LoadFromFile();
+      LoadInitialData();
     }
 
     public void Exit()
@@ -45,11 +44,23 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private void LoadMainScene() => 
       _sceneLoader.Load(MainSceneName,OnLoadedScene);
 
+    private void LoadInitialData()
+    {
+      var loader = new InitialDataLoader();
+      _initData = loader.LoadFromFile();
+    }
+
     private void OnLoadedScene()
     {
       HideDisclaimer();
       _uiFabric.CreateCommon();
-      _stateMachine.EnterWithParameter<ReconnaissanceState, InitialData>(_initData);
+      EnterNextState();
+    }
+
+    private void EnterNextState()
+    {
+      var army = new Army(_initData.PlayerArmy);
+      _stateMachine.EnterWithParameter<ReconnaissanceState, Army>(army);
     }
 
     private void HideDisclaimer()
