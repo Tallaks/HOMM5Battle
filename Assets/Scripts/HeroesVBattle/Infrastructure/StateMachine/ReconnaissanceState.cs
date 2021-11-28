@@ -1,16 +1,18 @@
 using HeroesVBattle.Audio;
+using HeroesVBattle.Data.GameData;
 using HeroesVBattle.Infrastructure.UI;
 using HeroesVBattle.Infrastructure.UI.Mediator;
 using UnityEngine;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public class ReconnaissanceState : IState
+  public class ReconnaissanceState : IStateParameter<InitialData>
   {
     private readonly StateMachine _stateMachine;
     private readonly UiFabric _uiFabric;
     private readonly SoundEffectsPlayer _soundEffectsPlayer;
     private ReconnaissanceStateMediator _uiMediator;
+    private InitialData _initData;
 
     public ReconnaissanceState(StateMachine stateMachine, UiFabric uiFabric, SoundEffectsPlayer soundEffectsPlayer)
     {
@@ -19,8 +21,11 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _soundEffectsPlayer = soundEffectsPlayer;
     }
 
-    public void Enter() => 
+    public void Enter(InitialData data)
+    {
       _uiMediator = (ReconnaissanceStateMediator)_uiFabric.Create<ReconnaissanceState>();
+      _initData = data;
+    }
 
     public void Exit()
     {
