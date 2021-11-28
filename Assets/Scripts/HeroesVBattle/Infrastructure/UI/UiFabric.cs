@@ -15,7 +15,7 @@ namespace HeroesVBattle.Infrastructure.UI
     private const string UITacticPrefabPath = "UI/UI - TacticalState";
     private const string UICommonPrefabPath = "UI/UI - Common";
 
-    public UiGameplayMediator Create<TState>() where TState : IState
+    public UiGameplayMediator Create<TState>() where TState : IExitableState
     {
       if (typeof(TState) == typeof(ReconnaissanceState))
         return InstantiateReconnaissanceHud();
