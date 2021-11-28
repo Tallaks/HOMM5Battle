@@ -21,13 +21,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  Icon: {fileID: 0}
-  Attack: 0
-  Defence: 0
-  MinDamage: 0
-  MaxDamage: 0
-  HitPoints: 0
-  Speed: 0
-  Initiative: 0
+  Icon: {fileID: 2800000, guid: 081e2e9677069e54ebf2d76028b09887, type: 3}
+  Attack: 22
+  Defence: 21
+  MinDamage: 13
+  MaxDamage: 21
+  HitPoints: 120
+  Speed: 6
+  Initiative: 9
   Shots: 0
   Mana: 0
