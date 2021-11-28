@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591717db9105497e9bf43048b576ed8d, type: 3}
-  m_Name: Marbas
+  m_Name: DuelMarbas
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,10 +21,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  Icon: {fileID: 0}
-  Attack: 0
-  Defence: 0
-  SpellPower: 0
-  Knowledge: 0
+  Icon: {fileID: 2800000, guid: 468e04acd68b5744e836bdd99ce37acb, type: 3}
+  Attack: 11
+  Defence: 6
+  SpellPower: 11
+  Knowledge: 9
   Morale: 0
   Luck: 0
