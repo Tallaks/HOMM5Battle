@@ -1,8 +1,7 @@
 namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public interface IState
+  public interface IState : IExitableState
   {
     void Enter();
-    void Exit();
   }
 }

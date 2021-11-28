@@ -8,12 +8,12 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 {
   public class StateMachine : IStateMachine
   {
-    private Dictionary<Type, IState> _states;
-    private IState _currentState;
+    private Dictionary<Type, IExitableState> _states;
+    private IExitableState _currentState;
 
     public StateMachine(DiContainer diContainer)
     {
-      _states = new Dictionary<Type, IState>
+      _states = new Dictionary<Type, IExitableState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
         [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>(), diContainer.Resolve<UiFabric>()),
@@ -27,11 +27,25 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       };
     }
 
-    public void Enter<TState>() where TState : IState
+    public void Enter<TState>() where TState : class,IState
+    {
+      var state = ChangeState<TState>();
+      state.Enter();
+    }
+
+    public void EnterWithParameter<TState, TParameter>(TParameter parameter) 
+      where TState : class,IStateParameter<TParameter>
+    {
+      var state = ChangeState<TState>();
+      state.Enter(parameter);
+    }
+
+    private TState ChangeState<TState>() where TState : class, IExitableState
     {
       _currentState?.Exit();
-      _currentState = _states[typeof(TState)];
-      _currentState.Enter();
+      _currentState = _states[typeof(TState)] as TState;
+
+      return _states[typeof(TState)] as TState;
     }
   }
 }
