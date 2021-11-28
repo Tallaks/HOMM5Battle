@@ -11,11 +11,11 @@ namespace HeroesVBattle.Data.EditorData
     [BoxGroup("Hero/Icon",order: 0)]
     [ShowInInspector]
     [PreviewField(Height = 55,Alignment = ObjectFieldAlignment.Left)]
-    public Texture Icon => hero.Icon;
+    public Texture Icon => Hero.Icon;
     
     [BoxGroup("Hero/Hero",order: 1)]
     [PreviewField(Height = 55)]
-    public HeroData hero;
+    public HeroData Hero;
 
     [BoxGroup("Army")]
     [TableList]
