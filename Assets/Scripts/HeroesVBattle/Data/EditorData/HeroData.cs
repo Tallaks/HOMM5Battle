@@ -8,7 +8,10 @@ namespace HeroesVBattle.Data.EditorData
   {
     [PreviewField]
     public Texture Icon;
-    
+
+    public Faction Faction;
+    public string HeroType;
+      
     public int Attack;
     public int Defence;
     public int SpellPower;
