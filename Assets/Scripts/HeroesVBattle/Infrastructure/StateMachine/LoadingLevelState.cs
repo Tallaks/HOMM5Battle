@@ -1,5 +1,6 @@
 using HeroesVBattle.Data.GameData;
 using HeroesVBattle.Gameplay.Units;
+using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -14,14 +15,16 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private readonly StateMachine _stateMachine;
     private readonly SceneLoader _sceneLoader;
     private readonly UiFabric _uiFabric;
+    private readonly IHeroFabric _heroFabric;
     private Disclaimer _disclaimer;
     private InitialData _initData;
 
-    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric)
+    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric, IHeroFabric heroFabric)
     {
       _stateMachine = stateMachine;
       _sceneLoader = sceneLoader;
       _uiFabric = uiFabric;
+      _heroFabric = heroFabric;
     }
 
     public void Enter()
@@ -59,7 +62,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     private void EnterNextState()
     {
-      var army = new Army(_initData.PlayerArmy);
+      var army = new Army(_initData.PlayerArmy, _heroFabric);
       _stateMachine.EnterWithParameter<ReconnaissanceState, Army>(army);
     }
 
