@@ -1,5 +1,6 @@
 using System;
 using HeroesVBattle.Audio;
+using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -30,6 +31,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _diContainer.Bind<SceneLoader>().FromNew().AsSingle();
       _diContainer.Bind<UiFabric>().FromNew().AsSingle().WithArguments(_diContainer);
       _diContainer.Bind<SoundEffectsPlayer>().FromMethod(InstantiateSoundEffectPlayer()).AsSingle();
+      _diContainer.Bind<IHeroFabric>().To<HeroFabric>().FromNew().AsSingle();
     }
 
     private Func<SoundEffectsPlayer> InstantiateSoundEffectPlayer() => 
