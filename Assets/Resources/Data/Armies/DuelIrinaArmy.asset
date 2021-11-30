@@ -15,19 +15,15 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 41b38ac26ce29f0409422edc4258d643, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: Hero
-      Entry: 10
-      Data: 0
+    SerializationNodes: []
   Hero: {fileID: 11400000, guid: 41b38ac26ce29f0409422edc4258d643, type: 2}
   Squads:
-  - creature: {fileID: 11400000, guid: a7c154f429c898a4bab6ab1f8eed8e32, type: 2}
+  - Creature: {fileID: 11400000, guid: a7c154f429c898a4bab6ab1f8eed8e32, type: 2}
     Quantity: 40
-  - creature: {fileID: 11400000, guid: 398a9a9fa5f6d2048b09518b85de0622, type: 2}
+  - Creature: {fileID: 11400000, guid: 398a9a9fa5f6d2048b09518b85de0622, type: 2}
     Quantity: 80

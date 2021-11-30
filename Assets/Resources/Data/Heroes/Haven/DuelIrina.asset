@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591717db9105497e9bf43048b576ed8d, type: 3}
   m_Name: DuelIrina
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   Icon: {fileID: 2800000, guid: 23ee776b2c92a514996e98f84e231858, type: 3}
+  Faction: 0
+  HeroType: Griffin Trainer
   Attack: 7
   Defence: 13
   SpellPower: 4
