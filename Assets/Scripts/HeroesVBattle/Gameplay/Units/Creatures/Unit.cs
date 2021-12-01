@@ -1,8 +1,8 @@
 ﻿using HeroesVBattle.Data.EditorData;
 
-namespace HeroesVBattle.Gameplay.Units
+namespace HeroesVBattle.Gameplay.Units.Creatures
 {
-  public class Unit
+  public abstract class Unit
   {
     public Unit(UnitData unitData)
     {
