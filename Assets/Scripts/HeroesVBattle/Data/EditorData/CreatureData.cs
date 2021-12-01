@@ -9,7 +9,8 @@ namespace HeroesVBattle.Data.EditorData
     [PreviewField]
     [TableColumnWidth(60,false)]
     public Texture Icon;
-    
+
+    public Faction Faction;
     public int Attack;
     public int Defence;
     public int MinDamage;
