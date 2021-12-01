@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ca9b0106cc3c404c976fd54eed0e787, type: 3}
-  m_Name: DuelMarbas
+  m_Name: DuelMarbasArmy
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
