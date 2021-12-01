@@ -1,5 +1,6 @@
 using HeroesVBattle.Data.GameData;
 using HeroesVBattle.Gameplay.Units;
+using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
 using UnityEngine;
@@ -16,15 +17,18 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private readonly SceneLoader _sceneLoader;
     private readonly UiFabric _uiFabric;
     private readonly IHeroFabric _heroFabric;
+    private readonly ICreatureFabric _creatureFabric;
     private Disclaimer _disclaimer;
     private InitialData _initData;
 
-    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric, IHeroFabric heroFabric)
+    public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric,
+      IHeroFabric heroFabric, ICreatureFabric creatureFabric)
     {
       _stateMachine = stateMachine;
       _sceneLoader = sceneLoader;
       _uiFabric = uiFabric;
       _heroFabric = heroFabric;
+      _creatureFabric = creatureFabric;
     }
 
     public void Enter()
@@ -62,7 +66,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     private void EnterNextState()
     {
-      var army = new Army(_initData.PlayerArmy, _heroFabric);
+      var army = new Army(_initData.PlayerArmy, _heroFabric, _creatureFabric);
       _stateMachine.EnterWithParameter<ReconnaissanceState, Army>(army);
     }
 
