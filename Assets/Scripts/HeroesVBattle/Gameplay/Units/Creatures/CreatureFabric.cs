@@ -36,7 +36,7 @@ namespace HeroesVBattle.Gameplay.Units.Creatures
     {
       switch (data.Creature.name)
       {
-        case "Imperial Griffin":
+        case "ImperialGriffin":
           return new ImperialGriffin(data);
         case "Squire":
           return new Squire(data);
