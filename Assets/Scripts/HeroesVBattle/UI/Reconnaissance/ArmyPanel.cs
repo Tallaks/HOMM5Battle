@@ -1,5 +1,5 @@
+using System;
 using HeroesVBattle.Gameplay.Units;
-using HeroesVBattle.Infrastructure.UI.Mediator;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,16 +7,17 @@ namespace HeroesVBattle.UI.Reconnaissance
 {
   public class ArmyPanel : MonoBehaviour
   {
-    [SerializeField] private Image _heroIcon;
-    [SerializeField] private Image[] _creatureIcons = new Image[7];
+    private const int ArmySize = 7;
     
-    private ReconnaissanceStateMediator _mediator;
+    [SerializeField] private Image _heroIcon;
+    [SerializeField] private Image[] _creatureIcons = new Image[ArmySize];
 
-    private void Awake() => 
-      _mediator = FindObjectOfType<ReconnaissanceStateMediator>();
-
-
-    public void InitIcons(Army army) => 
+    public void InitIcons(Army army)
+    {
       _heroIcon.sprite = army.Hero.Icon;
+      
+      for (var i = 0; i < Math.Min(ArmySize,army.Units.Length) ; i++) 
+        _creatureIcons[i].sprite = army.Units[i].Icon;
+    }
   }
 }
