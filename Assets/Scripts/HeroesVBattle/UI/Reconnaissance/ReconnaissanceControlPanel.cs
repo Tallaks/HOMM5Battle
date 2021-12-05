@@ -19,9 +19,7 @@ namespace HeroesVBattle.UI.Reconnaissance
     private void StartButton() => 
       _mediator.StartBattle();
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() => 
       _startBattleButton.onClick.RemoveAllListeners();
-    }
   }
 }
