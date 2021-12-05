@@ -22,6 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   Icon: {fileID: 2800000, guid: 1abf067c1464fed4f9bb2d2df89ca639, type: 3}
+  Faction: 1
   Attack: 3
   Defence: 4
   MinDamage: 1
