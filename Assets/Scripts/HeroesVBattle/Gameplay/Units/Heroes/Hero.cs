@@ -5,11 +5,11 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
 {
   public abstract class Hero
   {
-    protected readonly Texture Icon; 
-    
+    public Sprite Icon { get; }
+
     protected readonly Faction Faction;
 
-    protected readonly int Attack;
+    public int Attack { get; }
     protected readonly int Defence;
     protected readonly int SpellPower;
     protected readonly int Knowledge;

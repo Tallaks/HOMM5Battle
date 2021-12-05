@@ -7,7 +7,7 @@ namespace HeroesVBattle.Data.EditorData
   public class HeroData : SerializedScriptableObject
   {
     [PreviewField]
-    public Texture Icon;
+    public Sprite Icon;
 
     public Faction Faction;
     public string HeroType;
