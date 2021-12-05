@@ -1,3 +1,4 @@
+using System;
 using HeroesVBattle.Data.GameData;
 using HeroesVBattle.Gameplay.Units;
 using HeroesVBattle.Gameplay.Units.Creatures;
@@ -54,7 +55,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private void LoadInitialData()
     {
       var loader = new InitialDataLoader();
-      _initData = loader.LoadFromFile();
+      if (!loader.LoadFromFile(out _initData))
+        throw new Exception("Init Versions are not equal!");
     }
 
     private void OnLoadedScene()
