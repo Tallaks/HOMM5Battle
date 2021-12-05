@@ -8,7 +8,7 @@ namespace HeroesVBattle.Data.EditorData
   {
     [PreviewField]
     [TableColumnWidth(60,false)]
-    public Texture Icon;
+    public Sprite Icon;
 
     public Faction Faction;
     public int Attack;

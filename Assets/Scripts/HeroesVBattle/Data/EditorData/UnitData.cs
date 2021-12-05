@@ -13,7 +13,7 @@ namespace HeroesVBattle.Data.EditorData
     [TableColumnWidth(Size,false)]
     [ShowInInspector]
     [PropertyOrder(0)]
-    public Texture Icon => Creature?.Icon;
+    public Sprite Icon => Creature?.Icon;
     
     [PropertyOrder(1)]
     public CreatureData Creature;
