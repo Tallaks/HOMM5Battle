@@ -7,17 +7,17 @@ namespace HeroesVBattle.Gameplay.Units
   public class Army
   {
     public Hero Hero { get; }
-    private readonly Unit[] _units;
-    
+    public Unit[] Units { get; }
+
     public Army(ArmyData data, IHeroFabric heroFabric, ICreatureFabric creatureFabric)
     {
       Hero = heroFabric.Create(data.Hero);
-      _units = new Unit[7];
+      Units = new Unit[data.Squads.Length];
 
       var squadIndex = 0;
       foreach (UnitData squad in data.Squads)
       {
-        _units[squadIndex] = creatureFabric.Create(squad);
+        Units[squadIndex] = creatureFabric.Create(squad);
         squadIndex++;
       }
     }
