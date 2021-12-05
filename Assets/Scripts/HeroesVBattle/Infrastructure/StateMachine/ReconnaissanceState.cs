@@ -23,8 +23,9 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     public void Enter(Army army)
     {
-      _uiMediator = (ReconnaissanceStateMediator)_uiFabric.Create<ReconnaissanceState>();
       _army = army;
+      _uiMediator = (ReconnaissanceStateMediator)_uiFabric.Create<ReconnaissanceState>();
+      _uiMediator.ConnectArmyToUI(_army);
     }
 
     public void Exit()
