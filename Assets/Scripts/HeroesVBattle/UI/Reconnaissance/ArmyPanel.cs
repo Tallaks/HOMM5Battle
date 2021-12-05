@@ -10,14 +10,14 @@ namespace HeroesVBattle.UI.Reconnaissance
     private const int ArmySize = 7;
     
     [SerializeField] private Image _heroIcon;
-    [SerializeField] private Image[] _creatureIcons = new Image[ArmySize];
+    [SerializeField] private SquadElement[] _unitElement = new SquadElement[ArmySize];
 
     public void InitIcons(Army army)
     {
       _heroIcon.sprite = army.Hero.Icon;
       
       for (var i = 0; i < Math.Min(ArmySize,army.Units.Length) ; i++) 
-        _creatureIcons[i].sprite = army.Units[i].Icon;
+        _unitElement[i].InitElement(army.Units[i]);
     }
   }
 }
