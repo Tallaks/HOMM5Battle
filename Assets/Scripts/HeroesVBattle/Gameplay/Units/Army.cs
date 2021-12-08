@@ -1,6 +1,7 @@
 ﻿using HeroesVBattle.Data.EditorData;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
+using UnityEngine;
 
 namespace HeroesVBattle.Gameplay.Units
 {
@@ -11,7 +12,7 @@ namespace HeroesVBattle.Gameplay.Units
 
     public Army(ArmyData data, IHeroFabric heroFabric, ICreatureFabric creatureFabric)
     {
-      Hero = heroFabric.Create(data.Hero);
+      Hero = heroFabric.Create(data.Hero,this);
       Units = new Unit[data.Squads.Length];
 
       var squadIndex = 0;
@@ -20,6 +21,8 @@ namespace HeroesVBattle.Gameplay.Units
         Units[squadIndex] = creatureFabric.Create(squad);
         squadIndex++;
       }
+      
+      Hero.UseSpecialization();
     }
   }
 }
