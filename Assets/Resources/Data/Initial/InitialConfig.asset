@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialDataVersion:
     Main: 0
-    Additional: 5
+    Additional: 6
   Player: {fileID: 11400000, guid: 0da7180eba09fb048a369b47b61a0d4f, type: 2}
   Enemy: {fileID: 11400000, guid: 1ae06bc94d0c0c146bf4e66bc6038d5e, type: 2}
