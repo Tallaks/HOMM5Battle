@@ -1,7 +1,7 @@
 ﻿namespace HeroesVBattle.Gameplay.Units.Creatures.Abilities
 {
-  public interface IFlyer
+  public interface IAbility
   {
-    void FlyOver();
+    void Execute();
   }
 }
