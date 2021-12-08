@@ -11,7 +11,8 @@ namespace HeroesVBattle.Data.EditorData
 
     public Faction Faction;
     public string HeroType;
-      
+    public int Level;
+    
     public int Attack;
     public int Defence;
     public int SpellPower;

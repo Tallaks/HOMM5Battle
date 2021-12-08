@@ -24,6 +24,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 468e04acd68b5744e836bdd99ce37acb, type: 3}
   Faction: 1
   HeroType: Mindreaver
+  Level: 15
   Attack: 11
   Defence: 6
   SpellPower: 11

@@ -24,6 +24,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 23ee776b2c92a514996e98f84e231858, type: 3}
   Faction: 0
   HeroType: Griffin Trainer
+  Level: 15
   Attack: 7
   Defence: 13
   SpellPower: 4
