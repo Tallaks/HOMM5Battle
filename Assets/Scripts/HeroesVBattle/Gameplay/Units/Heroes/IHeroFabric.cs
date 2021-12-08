@@ -4,6 +4,6 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
 {
   public interface IHeroFabric
   {
-    Hero Create(HeroData data);
+    Hero Create(HeroData data, Army army);
   }
 }

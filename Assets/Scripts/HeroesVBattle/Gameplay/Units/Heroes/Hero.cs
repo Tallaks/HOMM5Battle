@@ -8,6 +8,7 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
     public Sprite Icon { get; }
 
     protected readonly Faction Faction;
+    protected readonly int Level;
 
     public int Attack { get; }
     protected readonly int Defence;
@@ -15,8 +16,10 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
     protected readonly int Knowledge;
     protected readonly int Luck;
     protected readonly int Morale;
-
-    public Hero(HeroData heroData)
+    
+    protected readonly Army Army;
+    
+    public Hero(HeroData heroData, Army army)
     {
       Attack = heroData.Attack;
       Defence = heroData.Defence;
@@ -26,6 +29,11 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
       Morale = heroData.Morale;
       Faction = heroData.Faction;
       Icon = heroData.Icon;
+      Level = heroData.Level;
+      
+      Army = army;
     }
+
+    public abstract void UseSpecialization();
   }
 }

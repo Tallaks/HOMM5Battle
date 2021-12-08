@@ -6,36 +6,36 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
 {
   public class HeroFabric : IHeroFabric
   {
-    public Hero Create(HeroData data)
+    public Hero Create(HeroData data, Army army)
     {
       switch (data.Faction)
       {
         case Faction.Haven:
-          return CreateHavenHero(data);
+          return CreateHavenHero(data, army);
         case Faction.Inferno:
-          return CreateInfernoHero(data);
+          return CreateInfernoHero(data, army);
         default:
           return null;
       }
     }
 
-    private Hero CreateInfernoHero(HeroData data)
+    private Hero CreateInfernoHero(HeroData data, Army army)
     {
       switch (data.HeroType)
       {
         case "Mindreaver":
-          return new MindReaver(data);
+          return new MindReaver(data, army);
         default:
           return null;
       }
     }
 
-    private Hero CreateHavenHero(HeroData data)
+    private Hero CreateHavenHero(HeroData data, Army army)
     {
       switch (data.HeroType)
       {
         case "Griffin Trainer":
-          return new GriffinTrainer(data);
+          return new GriffinTrainer(data, army);
         default:
           return null;
       }
