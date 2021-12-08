@@ -1,28 +1,21 @@
-﻿using HeroesVBattle.Data.EditorData;
+﻿using System;
+using System.Collections.Generic;
+using HeroesVBattle.Data.EditorData;
 using HeroesVBattle.Gameplay.Units.Creatures.Abilities;
 
 namespace HeroesVBattle.Gameplay.Units.Creatures.Haven
 {
-  public class Squire : Unit, ILargeShield, IShieldAllies, IBash, IEnraged
+  public class Squire : Unit
   {
     public Squire(UnitData data) : base(data)
     {
-    }
-
-    public void ProtectFromShot()
-    {
-    }
-
-    public void ProtectAllies()
-    {
-    }
-
-    public void Bash()
-    {
-    }
-
-    public void IncreaseAttack()
-    {
+      Abilities = new Dictionary<Type, IAbility>
+      {
+        [typeof(Bash)] = new Bash(),
+        [typeof(Enraged)] = new Enraged(),
+        [typeof(LargeShield)] = new LargeShield(),
+        [typeof(ShieldAllies)] = new ShieldAllies()
+      };
     }
   }
 }
