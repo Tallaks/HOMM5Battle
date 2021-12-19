@@ -4,6 +4,7 @@ using HeroesVBattle.Gameplay.Units;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
+using HeroesVBattle.Infrastructure.UI.Mediator;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -19,29 +20,31 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private readonly UiFabric _uiFabric;
     private readonly IHeroFabric _heroFabric;
     private readonly ICreatureFabric _creatureFabric;
+    private readonly CommonMediator _commonMediator;
     private Disclaimer _disclaimer;
     private InitialData _initData;
 
     public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric,
-      IHeroFabric heroFabric, ICreatureFabric creatureFabric)
+      IHeroFabric heroFabric, ICreatureFabric creatureFabric, CommonMediator commonMediator)
     {
       _stateMachine = stateMachine;
       _sceneLoader = sceneLoader;
       _uiFabric = uiFabric;
       _heroFabric = heroFabric;
       _creatureFabric = creatureFabric;
+      _commonMediator = commonMediator;
     }
 
     public void Enter()
     {
+      _commonMediator.Hide();
       InstantiateDisclaimer();
       LoadMainScene();
       LoadInitialData();
     }
 
-    public void Exit()
-    {
-    }
+    public void Exit() => 
+      _commonMediator.Show();
 
     private void InstantiateDisclaimer()
     {
@@ -62,7 +65,6 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private void OnLoadedScene()
     {
       HideDisclaimer();
-      _uiFabric.CreateCommon();
       EnterNextState();
     }
 

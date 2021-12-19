@@ -15,6 +15,8 @@ namespace HeroesVBattle.Infrastructure.UI.Mediator
     private ArmyPanel _armyPanel;
 
     public void StartBattle() => _stateMachine.Enter<EnemyPlacingState>();
-    public void ConnectArmyToUI(Army army) => _armyPanel.InitIcons(army);
+    public void ConnectArmyToUI(Army army) => _armyPanel.Init(army);
+    public void OpenHeroInfo(Army armyOfHero) => _stateMachine.EnterWithParameter<HeroInfoState, Army>(armyOfHero);
+    public void HideArmyPanel() => _armyPanel.Hide();
   }
 }

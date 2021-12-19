@@ -1,4 +1,6 @@
-﻿namespace HeroesVBattle.Infrastructure.StateMachine
+﻿using HeroesVBattle.Gameplay.Units;
+
+namespace HeroesVBattle.Infrastructure.StateMachine
 {
   public class PlayerDefiningState : IState
   {
@@ -8,7 +10,7 @@
       _stateMachine = stateMachine;
 
     public void Enter() => 
-      _stateMachine.Enter<TacticalState>();
+      _stateMachine.EnterWithParameter<TacticalState, Army>(null); 
 
     public void Exit()
     {

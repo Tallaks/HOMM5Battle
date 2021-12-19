@@ -1,10 +1,11 @@
-﻿using HeroesVBattle.Infrastructure.UI;
+﻿using HeroesVBattle.Gameplay.Units;
+using HeroesVBattle.Infrastructure.UI;
 using HeroesVBattle.Infrastructure.UI.Mediator;
 using UnityEngine;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
 {
-  public class TacticalState : IState
+  public class TacticalState : IStateParameter<Army>
   {
     private readonly StateMachine _stateMachine;
     private readonly UiFabric _uiFabric;
@@ -16,7 +17,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _uiFabric = uiFabric;
     }
 
-    public void Enter() => 
+    public void Enter(Army parameter) => 
       _stateMediator = (TacticalStateMediator)_uiFabric.Create<TacticalState>();
 
     public void Exit() => 
