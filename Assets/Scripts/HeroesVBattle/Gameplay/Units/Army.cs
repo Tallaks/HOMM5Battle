@@ -1,7 +1,6 @@
 ﻿using HeroesVBattle.Data.EditorData;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
-using UnityEngine;
 
 namespace HeroesVBattle.Gameplay.Units
 {
@@ -9,6 +8,8 @@ namespace HeroesVBattle.Gameplay.Units
   {
     public Hero Hero { get; }
     public Unit[] Units { get; }
+
+    public bool IsPlaced { get; }
 
     public Army(ArmyData data, IHeroFabric heroFabric, ICreatureFabric creatureFabric)
     {
