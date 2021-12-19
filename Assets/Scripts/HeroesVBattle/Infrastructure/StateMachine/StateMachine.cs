@@ -4,6 +4,7 @@ using HeroesVBattle.Audio;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
+using HeroesVBattle.Infrastructure.UI.Mediator;
 using Zenject;
 
 namespace HeroesVBattle.Infrastructure.StateMachine
@@ -18,11 +19,20 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _states = new Dictionary<Type, IExitableState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
+        
         [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>(),
           diContainer.Resolve<UiFabric>(),
           diContainer.Resolve<IHeroFabric>(),
-          diContainer.Resolve<ICreatureFabric>()),
-        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>(),diContainer.Resolve<SoundEffectsPlayer>()),
+          diContainer.Resolve<ICreatureFabric>(),
+          diContainer.Resolve<CommonMediator>()),
+        
+        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>(),
+          diContainer.Resolve<SoundEffectsPlayer>()),
+        
+        [typeof(HeroInfoState)] = new HeroInfoState(this, diContainer.Resolve<UiFabric>(),
+          diContainer.Resolve<SceneLoader>(),
+          diContainer.Resolve<CommonMediator>()),
+        
         [typeof(EnemyPlacingState)] = new EnemyPlacingState(this),
         [typeof(PlayerDefiningState)] = new PlayerDefiningState(this),
         [typeof(TacticalState)] = new TacticalState(this,diContainer.Resolve<UiFabric>()),

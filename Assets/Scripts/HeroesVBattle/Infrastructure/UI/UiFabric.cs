@@ -13,24 +13,27 @@ namespace HeroesVBattle.Infrastructure.UI
 
     private const string UIReconnaissancePrefabPath = "UI/UI - Reconnaissance";
     private const string UITacticPrefabPath = "UI/UI - TacticalState";
-    private const string UICommonPrefabPath = "UI/UI - Common";
-
+    private const string UIHeroInfoPrefabPath = "UI/UI - HeroInfo";
+    
     public UiGameplayMediator Create<TState>() where TState : IExitableState
     {
       if (typeof(TState) == typeof(ReconnaissanceState))
         return InstantiateReconnaissanceHud();
       if (typeof(TState) == typeof(TacticalState))
         return InstantiateTacticalHud();
+      if (typeof(TState) == typeof(HeroInfoState))
+        return InstantiateHeroInfoHud();
       else return null;
     }
 
-    public void CreateCommon() =>
-      _container.InstantiatePrefabResource(UICommonPrefabPath);
-
-    private TacticalStateMediator InstantiateTacticalHud() => 
-      _container.InstantiatePrefabResource(UITacticPrefabPath).GetComponent<TacticalStateMediator>();
+    private TacticalStateMediator InstantiateTacticalHud() =>
+    _container.InstantiatePrefabResource(UITacticPrefabPath).GetComponent<TacticalStateMediator>();
 
     private ReconnaissanceStateMediator InstantiateReconnaissanceHud() => 
       _container.InstantiatePrefabResource(UIReconnaissancePrefabPath).GetComponent<ReconnaissanceStateMediator>();
+
+    private HeroInfoMediator InstantiateHeroInfoHud() =>
+      _container.InstantiatePrefabResource(UIHeroInfoPrefabPath).GetComponent<HeroInfoMediator>();
+
   }
 }
