@@ -3,6 +3,7 @@ using HeroesVBattle.Audio;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
+using HeroesVBattle.Infrastructure.UI.Mediator;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -11,6 +12,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
   public class BootstrapState : IState
   {
     private const string SoundEffectsPrefabPath = "Audio/Effects";
+    private const string UICommonPrefabPath = "UI/UI - Common";
+    
     private readonly StateMachine _stateMachine;
     private readonly DiContainer _diContainer;
 
@@ -34,11 +37,15 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _diContainer.Bind<SoundEffectsPlayer>().FromMethod(InstantiateSoundEffectPlayer()).AsSingle();
       _diContainer.Bind<IHeroFabric>().To<HeroFabric>().FromNew().AsSingle();
       _diContainer.Bind<ICreatureFabric>().To<CreatureFabric>().FromNew().AsSingle();
+      _diContainer.Bind<CommonMediator>().FromMethod(InstantiateCommonUi()).AsSingle();
     }
 
     private Func<SoundEffectsPlayer> InstantiateSoundEffectPlayer() => 
       () => _diContainer.InstantiatePrefabResource(SoundEffectsPrefabPath).GetComponent<SoundEffectsPlayer>();
 
+    private Func<CommonMediator> InstantiateCommonUi() => 
+      () => _diContainer.InstantiatePrefabResource(UICommonPrefabPath).GetComponent<CommonMediator>();
+    
     public void Exit()
     {
     }
