@@ -5,10 +5,10 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
 {
   public abstract class Hero
   {
+    public string Name { get; }
     public Sprite Icon { get; }
-
-    protected readonly Faction Faction;
-    protected readonly int Level;
+    public Faction Faction { get; } 
+    public int Level { get; }
 
     public int Attack { get; }
     public int Defence { get; }
@@ -24,6 +24,7 @@ namespace HeroesVBattle.Gameplay.Units.Heroes
     
     public Hero(HeroData heroData, Army army)
     {
+      Name = heroData.name;
       Attack = heroData.Attack;
       Defence = heroData.Defence;
       SpellPower = heroData.SpellPower;
