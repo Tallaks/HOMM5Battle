@@ -9,7 +9,7 @@ namespace HeroesVBattle.UI.Interaction
   [RequireComponent(typeof(Button))]
   public class UiButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerClickHandler
   {
-    private const float DoubleClickTime = 1f;
+    private const float DoubleClickTime = 0.3f;
     
     public UnityEvent OnClick;
     public UnityEvent OnDoubleClick;
@@ -19,7 +19,7 @@ namespace HeroesVBattle.UI.Interaction
     
     private Button _button;
 
-    private void Awake() => 
+    protected virtual void Awake() => 
       _button = GetComponent<Button>();
 
     public void OnPointerDown(PointerEventData eventData)
@@ -59,8 +59,11 @@ namespace HeroesVBattle.UI.Interaction
 
     private IEnumerator WaitForSecondClick()
     {
-      if (_clickedOnce == false && _doubleClickTime < DoubleClickTime) 
+      OnClick?.Invoke();
+      if (_clickedOnce == false && _doubleClickTime < DoubleClickTime)
+      {
         _clickedOnce = true;
+      }
       else
       {
         _clickedOnce = false;
@@ -82,7 +85,7 @@ namespace HeroesVBattle.UI.Interaction
       }
 
       _doubleClickTime = 0f;
-      OnClick?.Invoke();
+      _clickedOnce = false;
     }
   }
 }
