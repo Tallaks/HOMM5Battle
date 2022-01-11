@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HeroesVBattle.Audio;
+using HeroesVBattle.Gameplay.GridMap;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
@@ -20,16 +21,21 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       {
         [typeof(BootstrapState)] = new BootstrapState(this, diContainer),
         
-        [typeof(LoadingLevelState)] = new LoadingLevelState(this, diContainer.Resolve<SceneLoader>(),
+        [typeof(LoadingLevelState)] = new LoadingLevelState(this, 
+          diContainer.Resolve<SceneLoader>(),
           diContainer.Resolve<UiFabric>(),
           diContainer.Resolve<IHeroFabric>(),
           diContainer.Resolve<ICreatureFabric>(),
-          diContainer.Resolve<CommonMediator>()),
+          diContainer.Resolve<CommonMediator>(),
+          diContainer.Resolve<MapBuilder>()),
+
+        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, 
+          diContainer.Resolve<UiFabric>(),
+          diContainer.Resolve<SoundEffectsPlayer>(),
+          diContainer.Resolve<MapBuilder>()),
         
-        [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, diContainer.Resolve<UiFabric>(),
-          diContainer.Resolve<SoundEffectsPlayer>()),
-        
-        [typeof(HeroInfoState)] = new HeroInfoState(this, diContainer.Resolve<UiFabric>(),
+        [typeof(HeroInfoState)] = new HeroInfoState(this, 
+          diContainer.Resolve<UiFabric>(),
           diContainer.Resolve<SceneLoader>(),
           diContainer.Resolve<CommonMediator>()),
         
