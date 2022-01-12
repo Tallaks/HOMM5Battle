@@ -75,6 +75,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _mapBuilder.OnBuild += EnterNextState;
       _mapBuilder.
         InitTerrain().
+        InitObstacles().
         Build();
     }
 
