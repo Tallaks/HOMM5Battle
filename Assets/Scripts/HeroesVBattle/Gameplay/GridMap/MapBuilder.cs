@@ -21,7 +21,12 @@ namespace HeroesVBattle.Gameplay.GridMap
       return this;
     }
 
-    public MapBuilder InitObstacles() => this;
+    public MapBuilder InitObstacles()
+    {
+      var obstacleSpawner = new MapObstacleSpawner(_container,GetMapType());
+      obstacleSpawner.SpawnObstacles();
+      return this;
+    }
 
 
     public MapBuilder InitReconnaissanceGrid(Army army)
@@ -33,5 +38,8 @@ namespace HeroesVBattle.Gameplay.GridMap
     public MapBuilder InitBattleGrid() => this;
 
     public void Build() => OnBuild.Invoke();
+
+    private MapType GetMapType() => 
+      _terrain.name.Contains("Grass") ? MapType.Grass : MapType.Rock;
   }
 }
