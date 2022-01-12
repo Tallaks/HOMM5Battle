@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HeroesVBattle.Audio;
 using HeroesVBattle.Gameplay.GridMap;
+using HeroesVBattle.Gameplay.GridMap.Builders;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
@@ -27,12 +28,12 @@ namespace HeroesVBattle.Infrastructure.StateMachine
           diContainer.Resolve<IHeroFabric>(),
           diContainer.Resolve<ICreatureFabric>(),
           diContainer.Resolve<CommonMediator>(),
-          diContainer.Resolve<MapBuilder>()),
+          diContainer.Resolve<MapObjectsBuilder>()),
 
         [typeof(ReconnaissanceState)] = new ReconnaissanceState(this, 
           diContainer.Resolve<UiFabric>(),
           diContainer.Resolve<SoundEffectsPlayer>(),
-          diContainer.Resolve<MapBuilder>()),
+          diContainer.Resolve<MapObjectsBuilder>()),
         
         [typeof(HeroInfoState)] = new HeroInfoState(this, 
           diContainer.Resolve<UiFabric>(),

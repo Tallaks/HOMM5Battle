@@ -1,6 +1,6 @@
 using System;
 using HeroesVBattle.Audio;
-using HeroesVBattle.Gameplay.GridMap;
+using HeroesVBattle.Gameplay.GridMap.Builders;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
 using HeroesVBattle.Infrastructure.UI;
@@ -39,7 +39,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _diContainer.Bind<IHeroFabric>().To<HeroFabric>().FromNew().AsSingle();
       _diContainer.Bind<ICreatureFabric>().To<CreatureFabric>().FromNew().AsSingle();
       _diContainer.Bind<CommonMediator>().FromMethod(InstantiateCommonUi()).AsSingle();
-      _diContainer.Bind<MapBuilder>().FromMethod((() => new MapBuilder(_diContainer))).AsSingle();
+      _diContainer.Bind<MapObjectsBuilder>().FromMethod((() => new MapObjectsBuilder(_diContainer))).AsSingle();
     }
 
     private Func<SoundEffectsPlayer> InstantiateSoundEffectPlayer() => 

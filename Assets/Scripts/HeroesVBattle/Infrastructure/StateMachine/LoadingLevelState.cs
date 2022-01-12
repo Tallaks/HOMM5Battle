@@ -1,6 +1,6 @@
 using System;
 using HeroesVBattle.Data.GameData;
-using HeroesVBattle.Gameplay.GridMap;
+using HeroesVBattle.Gameplay.GridMap.Builders;
 using HeroesVBattle.Gameplay.Units;
 using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Gameplay.Units.Heroes;
@@ -22,12 +22,12 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     private readonly IHeroFabric _heroFabric;
     private readonly ICreatureFabric _creatureFabric;
     private readonly CommonMediator _commonMediator;
-    private readonly MapBuilder _mapBuilder;
+    private readonly MapObjectsBuilder _mapObjectsBuilder;
     private Disclaimer _disclaimer;
     private InitialData _initData;
 
     public LoadingLevelState(StateMachine stateMachine, SceneLoader sceneLoader, UiFabric uiFabric,
-      IHeroFabric heroFabric, ICreatureFabric creatureFabric, CommonMediator commonMediator, MapBuilder mapBuilder)
+      IHeroFabric heroFabric, ICreatureFabric creatureFabric, CommonMediator commonMediator, MapObjectsBuilder mapObjectsBuilder)
     {
       _stateMachine = stateMachine;
       _sceneLoader = sceneLoader;
@@ -35,7 +35,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
       _heroFabric = heroFabric;
       _creatureFabric = creatureFabric;
       _commonMediator = commonMediator;
-      _mapBuilder = mapBuilder;
+      _mapObjectsBuilder = mapObjectsBuilder;
     }
 
     public void Enter()
@@ -48,7 +48,7 @@ namespace HeroesVBattle.Infrastructure.StateMachine
 
     public void Exit()
     {
-      _mapBuilder.OnBuild -= EnterNextState;
+      _mapObjectsBuilder.OnBuild -= EnterNextState;
       _commonMediator.Show();
     }
 
@@ -72,8 +72,8 @@ namespace HeroesVBattle.Infrastructure.StateMachine
     {
       HideDisclaimer();
 
-      _mapBuilder.OnBuild += EnterNextState;
-      _mapBuilder.
+      _mapObjectsBuilder.OnBuild += EnterNextState;
+      _mapObjectsBuilder.
         InitTerrain().
         InitObstacles().
         Build();
