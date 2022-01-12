@@ -3,7 +3,7 @@ using HeroesVBattle.Gameplay.Units;
 using UnityEngine;
 using Zenject;
 
-namespace HeroesVBattle.Gameplay.GridMap
+namespace HeroesVBattle.Gameplay.GridMap.Builders
 {
   public class ReconnaissanceTilesSpawner
   {
@@ -16,14 +16,17 @@ namespace HeroesVBattle.Gameplay.GridMap
     public ReconnaissanceTilesSpawner(DiContainer container) => 
       _container = container;
 
-    public void Create(Army army)
+    public void Create(Army army, Map map)
     {
       for (var i = 0; i < MaxMapWidth; i++)
       {
         for (var j = 0; j < MaxMapHeightDefault; j++)
         {
-          Vector3 currentTilePosition = new Vector2Int(i, j).CellToWorld();
-          _container.InstantiatePrefabResource(TilePrefabPath, currentTilePosition, Quaternion.identity, _container.DefaultParent);
+          var currentPositionCell = new Vector2Int(i, j);
+          if(map.TileHasObstacle(currentPositionCell)) continue;
+
+          Vector3 currentPositionWorld = currentPositionCell.CellToWorld();
+          _container.InstantiatePrefabResource(TilePrefabPath, currentPositionWorld, Quaternion.identity, _container.DefaultParent);
         }
       }
     }

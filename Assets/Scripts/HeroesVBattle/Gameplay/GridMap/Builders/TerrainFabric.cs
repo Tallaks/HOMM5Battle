@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace HeroesVBattle.Gameplay.GridMap
+namespace HeroesVBattle.Gameplay.GridMap.Builders
 {
   public class TerrainFabric
   {

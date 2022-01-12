@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace HeroesVBattle.Gameplay.GridMap
+namespace HeroesVBattle.Gameplay.GridMap.Builders
 {
   public class MapObstacleSpawner
   {
@@ -22,14 +22,14 @@ namespace HeroesVBattle.Gameplay.GridMap
       _obstacleList = InitObstacleList(obstacleTypes);
     }
 
-    public void SpawnObstacles()
+    public void SpawnObstacles(Map map)
     {
       foreach (KeyValuePair<GameObject, int> pair in _obstacleList)
       {
         for (var i = 0; i < pair.Value; i++)
         {
           GameObject obstacle = _diContainer.InstantiatePrefab(pair.Key);
-          PlaceObstacleOnMap(obstacle);
+          PlaceObstacleOnMap(obstacle, map);
         }
       }
     }
@@ -43,7 +43,11 @@ namespace HeroesVBattle.Gameplay.GridMap
       return obstacleList;
     }
 
-    private void PlaceObstacleOnMap(GameObject obstacle) => 
-      obstacle.transform.position = CellsAlgebra.RandomCell().CellToWorld();
+    private void PlaceObstacleOnMap(GameObject obstacle, Map map)
+    {
+      Vector2Int randomPosition = CellsAlgebra.RandomCell(); 
+      map.WriteObstacleOnPosition(randomPosition);
+      obstacle.transform.position = randomPosition.CellToWorld();
+    }
   }
 }
