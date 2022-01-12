@@ -4,6 +4,9 @@ namespace HeroesVBattle.Gameplay.GridMap.Extensions
 {
   public static class CellsAlgebra
   {
+    private const int MaxMapWidth = 10;
+    private const int MaxMapLength = 12;
+    
     private const float YTilePosition = 0.01f;
     private const float SmallTilesCenterDistance = 2f;
 
@@ -24,6 +27,13 @@ namespace HeroesVBattle.Gameplay.GridMap.Extensions
         (int)((worldPos.x - _zeroTilePosition.x) / SmallTilesCenterDistance),
         (int)((worldPos.z - _zeroTilePosition.z) / SmallTilesCenterDistance)
         );
+    }
+
+    public static Vector2Int RandomCell()
+    {
+      return new Vector2Int(
+        Random.Range(0, MaxMapWidth),
+        Random.Range(0, MaxMapLength));
     }
   }
 }
