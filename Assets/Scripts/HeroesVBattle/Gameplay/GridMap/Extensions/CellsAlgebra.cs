@@ -4,8 +4,8 @@ namespace HeroesVBattle.Gameplay.GridMap.Extensions
 {
   public static class CellsAlgebra
   {
-    private const int MaxMapWidth = 10;
-    private const int MaxMapLength = 12;
+    public const int MaxMapWidth = 10;
+    public const int MaxMapLength = 12;
     
     private const float YTilePosition = 0.01f;
     private const float SmallTilesCenterDistance = 2f;
