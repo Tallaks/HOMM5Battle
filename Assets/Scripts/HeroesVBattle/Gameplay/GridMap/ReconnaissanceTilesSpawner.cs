@@ -1,4 +1,5 @@
-﻿using HeroesVBattle.Gameplay.Units;
+﻿using HeroesVBattle.Gameplay.GridMap.Extensions;
+using HeroesVBattle.Gameplay.Units;
 using UnityEngine;
 using Zenject;
 
@@ -12,11 +13,6 @@ namespace HeroesVBattle.Gameplay.GridMap
     private const int MaxMapWidth = 10;
     private const int MaxMapHeightDefault = 2;
 
-    private const float YTilePosition = 0.01f;
-    private const float SmallTilesCenterDistance = 2f;
-    
-    private readonly Vector3 _firstTilePosition = new Vector3(3,YTilePosition,4);
-
     public ReconnaissanceTilesSpawner(DiContainer container) => 
       _container = container;
 
@@ -26,10 +22,7 @@ namespace HeroesVBattle.Gameplay.GridMap
       {
         for (var j = 0; j < MaxMapHeightDefault; j++)
         {
-          var currentTilePosition = new Vector3(
-            i * SmallTilesCenterDistance + _firstTilePosition.x,
-            YTilePosition,
-            j * SmallTilesCenterDistance + _firstTilePosition.z);
+          Vector3 currentTilePosition = new Vector2Int(i, j).CellToWorld();
           _container.InstantiatePrefabResource(TilePrefabPath, currentTilePosition, Quaternion.identity, _container.DefaultParent);
         }
       }
