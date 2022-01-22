@@ -1,5 +1,6 @@
 using System;
 using HeroesVBattle.Gameplay.Units;
+using HeroesVBattle.Gameplay.Units.Creatures;
 using HeroesVBattle.Infrastructure.UI.Mediator;
 using HeroesVBattle.UI.Interaction;
 using UnityEngine;
@@ -39,7 +40,18 @@ namespace HeroesVBattle.UI.Reconnaissance
       _heroIcon.sprite = army.Hero.Icon;
       
       for (var i = 0; i < Math.Min(ArmySize,army.Units.Length) ; i++) 
-        _unitElement[i].InitElement(army.Units[i]);
+        _unitElement[i].InitElement(army.Units[i], _mediator);
+    }
+
+    public void ClickOnUnitIcon(Unit unit)
+    {
+      foreach (SquadElement element in _unitElement)
+      {
+        if (element.Unit == unit)
+          element.Select();
+        else
+          element.Deselect();
+      }
     }
   }
 }
